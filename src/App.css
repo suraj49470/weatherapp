@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    font-family: "Roboto","Helvetica","Arial",sans-serif
+}
+
+.SearchCityListContainer{
+    background: red;
+}
+
+.CityDetailContainer{
+    background: red;
+    height: 100vh;
+}
