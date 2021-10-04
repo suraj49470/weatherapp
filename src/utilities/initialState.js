@@ -2,7 +2,7 @@ export const initialState = {
     searchCityState: {
       query: null,
       latLong: null,
-      cityList: null,
+      cityList: [],
       isLoading : false,
       errorMsg : null
     },

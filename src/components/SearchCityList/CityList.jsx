@@ -1,14 +1,14 @@
 import React from 'react';
 import { ListGroup, Col } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-function CityList() {
+function CityList({cityList}) {
     console.log('CityList Component loaded');
     return (
         <Col xs={8} sm={8} md={8} lg={8}>
             <ListGroup>
-                <ListGroup.Item><Link to="/cityDetail">Link Item 1</Link></ListGroup.Item>
-                <ListGroup.Item><Link to="/cityDetail">Link Item 1</Link></ListGroup.Item>
-                <ListGroup.Item><Link to="/cityDetail">Link Item 1</Link></ListGroup.Item>
+                {
+                   cityList.map((city ,i ) => <ListGroup.Item key={i}><Link to={`/cityDetail/${city.woeid}`}>{city.title}</Link></ListGroup.Item>)
+                }
             </ListGroup>
         </Col>
     )

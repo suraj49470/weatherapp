@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = 'https://www.metaweather.com/api/location/search/?';
+const baseUrl = 'https://meta-weather.vercel.app/api/location/search/?';
 
 const getBaseUrl = (type) => {
     return  type === 'location' ? baseUrl+'lattlong=' : baseUrl+'query=';
@@ -11,6 +11,7 @@ export const getCityListBasedOnLocation = async (LatLong) => {
         return await axios.get(getBaseUrl('location') + LatLong);
        
     } catch (error) {
+        console.log(error);
         throw error;
     }
 

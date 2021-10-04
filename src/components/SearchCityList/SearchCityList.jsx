@@ -4,7 +4,7 @@ import CityList from './CityList';
 import { Container, Row, Col } from 'react-bootstrap';
 import { searchCityContext } from '../../App';
 import { fetchLocation } from '../../api/location';
-import { getCityListBasedOnLocation, } from '../../api/locationList';
+import { getCityListBasedOnLocation, getCityListbaseOnQuery } from '../../api/locationList';
 
 function SearchCityList() {
     const { searchCityState, searchCityStateDispatch } = useContext(searchCityContext);
@@ -17,13 +17,13 @@ function SearchCityList() {
             const { coords: { latitude, longitude } } = await fetchLocation();
             searchCityStateDispatch({ type: 'USER_LOCATION_SUCCESS', payload: latitude + ',' + longitude });
 
-            
+
             const latlong = latitude + ',' + longitude;
-            const locationList = await getCityListBasedOnLocation(latlong);
-            console.log(locationList);
+            const { data } = await getCityListBasedOnLocation(latlong);
+            searchCityStateDispatch({ type: 'USER_LOCATION_CITYLIST_SUCCESS', payload: data });
+
 
         } catch (error) {
-            console.log(error)
             searchCityStateDispatch({ type: 'USER_LOCATION_ERROR', payload: error.message });
         }
 
@@ -31,6 +31,12 @@ function SearchCityList() {
 
     const getQuery = async (query) => {
         searchCityStateDispatch({ type: 'CITY_SEARCH_LOADING', payload: query });
+        try {
+            const { data } = await getCityListbaseOnQuery(query);
+            searchCityStateDispatch({ type: 'CITY_SEARCH_SUCCESS', payload: data });
+        } catch (error) {
+            searchCityStateDispatch({ type: 'CITY_SEARCH_ERROR', payload: 'Records not found' });
+        }
     }
 
     useEffect(() => {
@@ -42,9 +48,9 @@ function SearchCityList() {
     return (
 
         <Container className="SearchCityListContainer">
-            {JSON.stringify(searchCityState)}
+            {/* {JSON.stringify(searchCityState)} */}
             <Row>
-                <Search userLocation={userLocation} getQuery={getQuery} />
+                <Search query={searchCityState.query} userLocation={userLocation} getQuery={getQuery} />
             </Row>
 
             <Row className="pT10">
@@ -53,7 +59,7 @@ function SearchCityList() {
                 </Col>
             </Row>
             <Row>
-                <CityList />
+              {searchCityState.cityList && searchCityState.cityList.length > 0 && <CityList cityList={searchCityState.cityList}/>}  
             </Row>
 
         </Container>

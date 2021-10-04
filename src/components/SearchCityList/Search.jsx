@@ -3,12 +3,12 @@ import {Col, Button, Form } from 'react-bootstrap';
 
 
 
-function Search({userLocation , getQuery}) {
+function Search({userLocation , getQuery , query}) {
     console.log('Search component loaded');
     return (
         <>
             <Col xs={8} sm={8} md={8} lg={8}>
-                <Form.Control onChange={(e) => getQuery(e.target.value)} size="md" type="text" placeholder="Type city name..." />
+                <Form.Control value={query ? query : ""} onChange={(e) => getQuery(e.target.value)} size="md" type="text" placeholder="Type city name..." />
             </Col>
            
             <Col xs={1} sm={1} md={1} lg={1} className="location">
