@@ -18,7 +18,7 @@ function CityDetail() {
                       <div className='cityWeather'>
                           <h6>Sun 6th</h6>
                           <div className="cityWeatherFlex">
-                              <img className="cityImage" src="https://www.metaweather.com/static/img/weather/lr.svg"/>
+                              <img className="cityImage" alt="" src="https://www.metaweather.com/static/img/weather/lr.svg"/>
                               <div className="cityWeatherTempFlex">
                                   <p>10<span>&#176;</span></p>
                                   <p>22<span>&#176;</span></p>
@@ -30,7 +30,7 @@ function CityDetail() {
                       <div className='cityWeather'>
                       <h6>Sun 6th</h6>
                           <div className="cityWeatherFlex">
-                              <img className="cityImage" src={"https://www.metaweather.com/static/img/weather/lr.svg"}/>
+                              <img className="cityImage" alt="" src={"https://www.metaweather.com/static/img/weather/lr.svg"}/>
                               <div className="cityWeatherTempFlex">
                                   <p>10<span>&#176;</span></p>
                                   <p>22<span>&#176;</span></p>
@@ -42,7 +42,7 @@ function CityDetail() {
                       <div className='cityWeather'>
                           <h6>Sun 6th</h6>
                           <div className="cityWeatherFlex">
-                              <img className="cityImage" className="cityImage" src={"https://www.metaweather.com/static/img/weather/lr.svg"}/>
+                              <img  alt="" className="cityImage" src={"https://www.metaweather.com/static/img/weather/lr.svg"}/>
                               <div className="cityWeatherTempFlex">
                                    <p>10<span>&#176;</span></p>
                                   <p>22<span>&#176;</span></p>
@@ -54,7 +54,7 @@ function CityDetail() {
                       <div className='cityWeather'>
                           <h6>Sun 6th</h6>
                           <div className="cityWeatherFlex">
-                              <img className="cityImage" src={"https://www.metaweather.com/static/img/weather/lr.svg"}/>
+                              <img className="cityImage" alt="" src={"https://www.metaweather.com/static/img/weather/lr.svg"}/>
                               <div className="cityWeatherTempFlex">
                                   <p>10<span>&#176;</span></p>
                                   <p>22<span>&#176;</span></p>
@@ -66,7 +66,7 @@ function CityDetail() {
                       <div className='cityWeather'>
                           <h6>Sun 6th</h6>
                           <div className="cityWeatherFlex">
-                              <img className="cityImage" src={"https://www.metaweather.com/static/img/weather/lr.svg"}/>
+                              <img className="cityImage" alt="" src={"https://www.metaweather.com/static/img/weather/lr.svg"}/>
                               <div className="cityWeatherTempFlex">
                                   <p>10<span>&#176;</span></p>
                                   <p>22<span>&#176;</span></p>

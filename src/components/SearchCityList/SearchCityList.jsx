@@ -4,7 +4,7 @@ import CityList from './CityList';
 import { Container, Row, Col } from 'react-bootstrap';
 import { searchCityContext } from '../../App';
 import { fetchLocation } from '../../api/location';
-import { getCityListBasedOnLocation, getCityListbaseOnQuery } from '../../api/locationList';
+import { getCityListBasedOnLocation, } from '../../api/locationList';
 
 function SearchCityList() {
     const { searchCityState, searchCityStateDispatch } = useContext(searchCityContext);
@@ -23,7 +23,7 @@ function SearchCityList() {
             console.log(locationList);
 
         } catch (error) {
-            console.log(error);
+            console.log(error)
             searchCityStateDispatch({ type: 'USER_LOCATION_ERROR', payload: error.message });
         }
 
@@ -35,6 +35,7 @@ function SearchCityList() {
 
     useEffect(() => {
         userLocation();
+        // eslint-disable-next-line
     }, []);
 
 
