@@ -3,7 +3,7 @@ import axios from "axios";
 const baseUrl = 'https://www.metaweather.com/api/location/search/?';
 
 const getBaseUrl = (type) => {
-    return  type == 'location' ? baseUrl+'lattlong=' : baseUrl+'query=';
+    return  type === 'location' ? baseUrl+'lattlong=' : baseUrl+'query=';
 }
 export const getCityListBasedOnLocation = async (LatLong) => {
 
