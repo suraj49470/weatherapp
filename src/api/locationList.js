@@ -31,7 +31,7 @@ export const getCityListbaseOnQuery = async (query) => {
         if(data && data.length > 0){
             return data;
         }else{
-            throw 'Records not found...';
+            throw new Error('Records not found...');
         }
         
     } catch (error) {
