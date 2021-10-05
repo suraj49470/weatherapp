@@ -48,9 +48,8 @@ function SearchCityList() {
     return (
 
         <Container className="SearchCityListContainer">
-            {/* {JSON.stringify(searchCityState)} */}
-            <Row>
-                <Search query={searchCityState.query} userLocation={userLocation} getQuery={getQuery} />
+        <Row>
+                <Search isLoading={searchCityState.isLoading} query={searchCityState.query} userLocation={userLocation} getQuery={getQuery} />
             </Row>
 
             <Row className="pT10">
@@ -59,7 +58,7 @@ function SearchCityList() {
                 </Col>
             </Row>
             <Row>
-              {searchCityState.cityList && searchCityState.cityList.length > 0 && <CityList cityList={searchCityState.cityList}/>}  
+                {searchCityState.cityList && searchCityState.cityList.length > 0 && <CityList cityList={searchCityState.cityList} />}
             </Row>
 
         </Container>

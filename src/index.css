@@ -6,7 +6,7 @@ body {
     padding-top: 30px;
 }
 .SearchCityListContainer div.location{
-    /* padding: 6px 5px; */
+    padding-left: 0px;
 }
 
 .SearchCityListContainer div.location button{

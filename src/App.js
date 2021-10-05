@@ -25,7 +25,7 @@ export default function App() {
       <searchCityContext.Provider value={stateDispatchObj}>
         <Router>
           <Switch>
-            <Route path="/cityDetail/:id">
+            <Route path="/cityDetail/:woeid">
               <CityDetail />
             </Route>
             <Route path="/">
