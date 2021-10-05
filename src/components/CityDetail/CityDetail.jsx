@@ -26,8 +26,9 @@ function CityDetail() {
 
 
     useEffect(() => {
-        // eslint-disable-next-line
+       
         getLocationDetails(woeid);
+        // eslint-disable-next-line
     }, []);
     return (
         <div className="CityDetailContainer">

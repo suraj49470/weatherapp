@@ -41,8 +41,9 @@ function SearchCityList() {
     }
 
     useEffect(() => {
-        // eslint-disable-next-line
+       
         userLocation();
+        // eslint-disable-next-line
     }, []);
 
 
