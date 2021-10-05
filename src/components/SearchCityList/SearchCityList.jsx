@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, } from 'react';
 import Search from './Search';
 import CityList from './CityList';
-import { Container, Row,} from 'react-bootstrap';
+import { Container, Row, } from 'react-bootstrap';
 import { weatherContext } from '../../App';
 import { fetchLocation } from '../../api/location';
 import { getCityListBasedOnLocation, getCityListbaseOnQuery } from '../../api/locationList';
@@ -27,27 +27,27 @@ function SearchCityList() {
 
 
         } catch (error) {
-            searchCityStateDispatch({ type: 'USER_LOCATION_ERROR', payload: 'please allow location' });
+            searchCityStateDispatch({ type: 'USER_LOCATION_ERROR', payload: 'Please allow location to get location based results.' });
         }
 
     }
 
     const getQuery = async (query) => {
         searchCityStateDispatch({ type: 'CITY_SEARCH_LOADING', payload: query });
-
-
-
+        
         if (!query) {
+            searchCityStateDispatch({ type: 'CITY_SEARCH_EMPTY_QUERY', payload: null });
             userLocation();
-            return;
+        } else {
+            try {
+                const data = await getCityListbaseOnQuery(query);
+                const resultBasedOn = ` ${query}`;
+                searchCityStateDispatch({ type: 'CITY_SEARCH_SUCCESS', payload: { 'data': data, 'resultBasedOn': resultBasedOn } });
+            } catch (error) {
+                searchCityStateDispatch({ type: 'CITY_SEARCH_ERROR', payload: 'Records not found' });
+            }
         }
-        try {
-            const  data  = await getCityListbaseOnQuery(query);
-            const resultBasedOn = ` ${query}`;
-            searchCityStateDispatch({ type: 'CITY_SEARCH_SUCCESS', payload: { 'data': data, 'resultBasedOn': resultBasedOn } });
-        } catch (error) {
-            searchCityStateDispatch({ type: 'CITY_SEARCH_ERROR', payload: 'Records not found' });
-        }
+
     }
 
     useEffect(() => {
@@ -62,7 +62,7 @@ function SearchCityList() {
     return (
 
         <Container className="SearchCityListContainer">
-          
+
             <Row>
                 <Search isLoading={searchCityState.isLoading} query={searchCityState.query} userLocation={userLocation} getQuery={getQuery} />
             </Row>
@@ -71,7 +71,7 @@ function SearchCityList() {
             }
 
             {
-                !searchCityState.isLoading && searchCityState.errorMsg && <LocationDenied errorMsg={searchCityState.errorMsg}/>
+                !searchCityState.isLoading && searchCityState.errorMsg && <LocationDenied errorMsg={searchCityState.errorMsg} />
             }
 
             <Row>
