@@ -3,7 +3,9 @@ import React from 'react'
 function Error() {
     return (
         <div className="cityDetailErrorContainer">
-            <h1>Not found</h1>
+            <span className="material-icons" style={{'fontSize' : '100px'}}>
+                cloud_off
+            </span>
         </div>
     )
 }

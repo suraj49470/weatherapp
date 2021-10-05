@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    background-color: 	rgb(248,248,248);
 }
 
 .SearchCityListContainer{
@@ -92,7 +93,6 @@ body {
     transform: translate(-50%,-50%);
 }
 .CityDetailContainer{
-    background: red;
     height: 100vh;
     background-repeat: no-repeat;
     background-attachment: fixed;
