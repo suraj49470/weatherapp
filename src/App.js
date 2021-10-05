@@ -10,19 +10,26 @@ import SearchCityList from './components/SearchCityList/SearchCityList';
 
 import { initialState } from "./utilities/initialState";
 import { searchCity } from "./reducers/searchCity";
+import { cityDetail } from "./reducers/cityDetail";
 
-
-export const searchCityContext = React.createContext();
+export const weatherContext = React.createContext();
 
 export default function App() {
+  
   const [searchCityState, searchCityStateDispatch] = useReducer(searchCity, initialState.searchCityState);
+  const [cityDetailState,cityDetailDispatch] = useReducer(cityDetail,initialState.CityDetailState);
+
+
+
+
   const stateDispatchObj = {
-    searchCityState: searchCityState, searchCityStateDispatch: searchCityStateDispatch
+    searchCityState: searchCityState, searchCityStateDispatch: searchCityStateDispatch,
+    cityDetailState : cityDetailState , cityDetailDispatch : cityDetailDispatch
   };
   return (
 
     <div>
-      <searchCityContext.Provider value={stateDispatchObj}>
+      <weatherContext.Provider value={stateDispatchObj}>
         <Router>
           <Switch>
             <Route path="/cityDetail/:woeid">
@@ -33,7 +40,7 @@ export default function App() {
             </Route>
           </Switch>
         </Router>
-      </searchCityContext.Provider>
+      </weatherContext.Provider>
     </div>
 
   );

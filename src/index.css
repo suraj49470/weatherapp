@@ -85,6 +85,12 @@ body {
     color: white;
 }
 
+.cityDetailErrorContainer , .cityDetailLoadingContainer{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
 .CityDetailContainer{
     background: red;
     height: 100vh;

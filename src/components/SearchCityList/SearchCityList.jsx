@@ -2,12 +2,12 @@ import React, { useContext, useEffect, } from 'react';
 import Search from './Search';
 import CityList from './CityList';
 import { Container, Row, Col } from 'react-bootstrap';
-import { searchCityContext } from '../../App';
+import { weatherContext } from '../../App';
 import { fetchLocation } from '../../api/location';
 import { getCityListBasedOnLocation, getCityListbaseOnQuery } from '../../api/locationList';
 
 function SearchCityList() {
-    const { searchCityState, searchCityStateDispatch } = useContext(searchCityContext);
+    const { searchCityState, searchCityStateDispatch } = useContext(weatherContext);
 
 
     const userLocation = async () => {
@@ -19,6 +19,7 @@ function SearchCityList() {
 
 
             const latlong = latitude + ',' + longitude;
+            searchCityStateDispatch({ type: 'USER_LOCATION_LOADING', payload: null });
             const { data } = await getCityListBasedOnLocation(latlong);
             searchCityStateDispatch({ type: 'USER_LOCATION_CITYLIST_SUCCESS', payload: data });
 
@@ -40,15 +41,15 @@ function SearchCityList() {
     }
 
     useEffect(() => {
-        userLocation();
         // eslint-disable-next-line
+        userLocation();
     }, []);
 
 
     return (
 
         <Container className="SearchCityListContainer">
-        <Row>
+            <Row>
                 <Search isLoading={searchCityState.isLoading} query={searchCityState.query} userLocation={userLocation} getQuery={getQuery} />
             </Row>
 

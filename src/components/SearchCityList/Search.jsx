@@ -4,7 +4,6 @@ import { Col, Button, Form,Spinner } from 'react-bootstrap';
 
 
 function Search({ userLocation, getQuery, query ,isLoading}) {
-    console.log('Search component loaded');
     return (
         <>
             <Col xs={8} sm={8} md={8} lg={8}>

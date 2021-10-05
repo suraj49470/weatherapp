@@ -1,5 +1,4 @@
 export const searchCity = (state, action) => {
-    console.log(action);
     switch (action.type) {
         case 'CITY_SEARCH_LOADING' :
             return {

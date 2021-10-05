@@ -3,10 +3,12 @@ export const initialState = {
       query: null,
       latLong: null,
       cityList: [],
-      isLoading : false,
+      isLoading : true,
       errorMsg : null
     },
     CityDetailState: {
-      cityDetail: null
+      cityDetail: null,
+      isLoading : true,
+      errorMsg : null
     }
   };
