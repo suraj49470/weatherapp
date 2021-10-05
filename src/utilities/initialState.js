@@ -4,7 +4,8 @@ export const initialState = {
       latLong: null,
       cityList: [],
       isLoading : true,
-      errorMsg : null
+      errorMsg : null,
+      resultBasedOn:null
     },
     CityDetailState: {
       cityDetail: null,

@@ -43,4 +43,4 @@ function CityDetail() {
 
 
 
-export default CityDetail;
+export default React.memo(CityDetail);

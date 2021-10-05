@@ -21,7 +21,8 @@ function SearchCityList() {
             const latlong = latitude + ',' + longitude;
             searchCityStateDispatch({ type: 'USER_LOCATION_LOADING', payload: null });
             const { data } = await getCityListBasedOnLocation(latlong);
-            searchCityStateDispatch({ type: 'USER_LOCATION_CITYLIST_SUCCESS', payload: data });
+            const resultBasedOn = ` Current location : { ${latlong} }`;
+            searchCityStateDispatch({ type: 'USER_LOCATION_CITYLIST_SUCCESS', payload: { 'data': data, 'resultBasedOn': resultBasedOn } });
 
 
         } catch (error) {
@@ -32,17 +33,27 @@ function SearchCityList() {
 
     const getQuery = async (query) => {
         searchCityStateDispatch({ type: 'CITY_SEARCH_LOADING', payload: query });
+
+
+
+        if (!query) {
+            userLocation();
+            return;
+        }
         try {
             const { data } = await getCityListbaseOnQuery(query);
-            searchCityStateDispatch({ type: 'CITY_SEARCH_SUCCESS', payload: data });
+            const resultBasedOn = ` ${query}`;
+            searchCityStateDispatch({ type: 'CITY_SEARCH_SUCCESS', payload: { 'data': data, 'resultBasedOn': resultBasedOn } });
         } catch (error) {
             searchCityStateDispatch({ type: 'CITY_SEARCH_ERROR', payload: 'Records not found' });
         }
     }
 
     useEffect(() => {
-       
-        userLocation();
+        if (searchCityState && searchCityState.cityList && searchCityState.cityList.length === 0) {
+            userLocation();
+        }
+
         // eslint-disable-next-line
     }, []);
 
@@ -56,7 +67,7 @@ function SearchCityList() {
 
             <Row className="pT10">
                 <Col xs={12} sm={12} md={12} lg={12}>
-                    <small className="text-muted"><b>Results are based on your : Current Location</b></small>
+                    <small className="text-muted"><b>Results are based on your : {searchCityState.resultBasedOn}</b></small>
                 </Col>
             </Row>
             <Row>
@@ -68,4 +79,4 @@ function SearchCityList() {
     )
 }
 
-export default SearchCityList;
+export default React.memo(SearchCityList);
