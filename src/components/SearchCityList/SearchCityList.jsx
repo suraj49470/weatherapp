@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, } from 'react';
 import Search from './Search';
 import CityList from './CityList';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row,} from 'react-bootstrap';
 import { weatherContext } from '../../App';
 import { fetchLocation } from '../../api/location';
 import { getCityListBasedOnLocation, getCityListbaseOnQuery } from '../../api/locationList';
-
+import LocationDenied from './LocationDenied';
+import ResultBasedOn from './ResultBasedOn';
 function SearchCityList() {
     const { searchCityState, searchCityStateDispatch } = useContext(weatherContext);
 
@@ -26,7 +27,7 @@ function SearchCityList() {
 
 
         } catch (error) {
-            searchCityStateDispatch({ type: 'USER_LOCATION_ERROR', payload: error.message });
+            searchCityStateDispatch({ type: 'USER_LOCATION_ERROR', payload: 'please allow location' });
         }
 
     }
@@ -41,7 +42,7 @@ function SearchCityList() {
             return;
         }
         try {
-            const { data } = await getCityListbaseOnQuery(query);
+            const  data  = await getCityListbaseOnQuery(query);
             const resultBasedOn = ` ${query}`;
             searchCityStateDispatch({ type: 'CITY_SEARCH_SUCCESS', payload: { 'data': data, 'resultBasedOn': resultBasedOn } });
         } catch (error) {
@@ -61,15 +62,18 @@ function SearchCityList() {
     return (
 
         <Container className="SearchCityListContainer">
+          
             <Row>
                 <Search isLoading={searchCityState.isLoading} query={searchCityState.query} userLocation={userLocation} getQuery={getQuery} />
             </Row>
+            {
+                !searchCityState.isLoading && !searchCityState.errorMsg && (<ResultBasedOn msg={searchCityState.resultBasedOn} />)
+            }
 
-            <Row className="pT10">
-                <Col xs={12} sm={12} md={12} lg={12}>
-                    <small className="text-muted"><b>Results are based on your : {searchCityState.resultBasedOn}</b></small>
-                </Col>
-            </Row>
+            {
+                !searchCityState.isLoading && searchCityState.errorMsg && <LocationDenied errorMsg={searchCityState.errorMsg}/>
+            }
+
             <Row>
                 {searchCityState.cityList && searchCityState.cityList.length > 0 && <CityList cityList={searchCityState.cityList} />}
             </Row>
@@ -78,5 +82,8 @@ function SearchCityList() {
 
     )
 }
+
+
+
 
 export default React.memo(SearchCityList);

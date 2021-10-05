@@ -25,7 +25,14 @@ export const getCityListBasedOnLocation = async (LatLong) => {
 export const getCityListbaseOnQuery = async (query) => {
 
     try {
-        return await axios.get(getBaseUrl('query') + query);
+
+        const { data } = await axios.get(getBaseUrl('query') + query);
+        console.log(data);
+        if(data && data.length > 0){
+            return data;
+        }else{
+            throw 'Records not found...';
+        }
         
     } catch (error) {
         throw error;

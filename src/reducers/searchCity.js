@@ -1,4 +1,5 @@
 export const searchCity = (state, action) => {
+    console.log(action.type);
     switch (action.type) {
         case 'CITY_SEARCH_LOADING':
             return {
@@ -29,7 +30,7 @@ export const searchCity = (state, action) => {
         case 'USER_LOCATION_LOADING':
             return {
                 ...state,
-                // query : null,
+                 query : null,
                 isLoading: true,
                 errorMsg: null,
                 cityList: [],
