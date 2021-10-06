@@ -18,7 +18,7 @@ To run application using docker :
 
                 docker build -t [APP_NAME] .
 
-                docker run -it --rm -p 3000:300 [APP_NAME]
+                docker run -it --rm -p 3000:3000 [APP_NAME]
         
 
 Pull application from Docker repository :
