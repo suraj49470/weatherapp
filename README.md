@@ -13,6 +13,25 @@ To run application follow below steps :
         npm run start
 
 
+To run application using docker :
+        Create image and run:
+
+                docker build -t [APP_NAME] .
+
+                docker run -it --rm -p 3000:300 [APP_NAME]
+        
+
+Pull application from Docker repository :
+
+        docker pull suraj49470/weatherapp:latest
+
+        docker run -it --rm -p 3000:3000 suraj49470/weatherapp
+
+
+
+
+
+
 
 Running version of application is available on :
 
