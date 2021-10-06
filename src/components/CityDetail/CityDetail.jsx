@@ -23,13 +23,11 @@ function CityDetail() {
         }
     }
 
-
-
     useEffect(() => {
-       
-        getLocationDetails(woeid);
-        // eslint-disable-next-line
+       getLocationDetails(woeid);
+       // eslint-disable-next-line
     }, []);
+    
     return (
         <div className="CityDetailContainer">
             {cityDetailState.isLoading && <Loading />}
@@ -38,9 +36,4 @@ function CityDetail() {
         </div>
     )
 }
-
-
-
-
-
 export default React.memo(CityDetail);

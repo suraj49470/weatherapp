@@ -34,7 +34,7 @@ function SearchCityList() {
 
     const getQuery = async (query) => {
         searchCityStateDispatch({ type: 'CITY_SEARCH_LOADING', payload: query });
-        
+
         if (!query) {
             searchCityStateDispatch({ type: 'CITY_SEARCH_EMPTY_QUERY', payload: null });
             userLocation();

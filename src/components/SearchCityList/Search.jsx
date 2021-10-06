@@ -1,8 +1,5 @@
 import React from 'react';
 import { Col, Button, Form,Spinner } from 'react-bootstrap';
-
-
-
 function Search({ userLocation, getQuery, query ,isLoading}) {
     return (
         <>
