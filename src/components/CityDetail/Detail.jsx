@@ -3,7 +3,6 @@ import React from 'react'
 const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 function Detail(props) {
     const cityDetail = props.cityDetail;
-    console.log(cityDetail);
     return (
         <div className="cityDetailitemcontainer">
             <div className="cityNameContainer">
