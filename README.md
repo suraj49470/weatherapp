@@ -1,7 +1,7 @@
 Applcaition is created using React + React Hooks
 
 
-To run application follow below steps :
+To run application follow below steps:
 
 
         git clone https://github.com/suraj49470/weatherapp.git
